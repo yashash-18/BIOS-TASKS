@@ -1,0 +1,155 @@
+# Kali - Linux - Writeups
+
+LEVEL-->0
+
+PASSWORD :bandit0
+STEPS    :ssh bandit0@bandit.labs.overthewire.org -p 2220
+
+LEVEL-0-->LEVEL-1
+
+PASSWORD :ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+STEPS    :ssh bandit0@bandit.labs.overthewire.org -p 2220
+          cat readme
+
+LEVEL-1-->LEVEL-2
+
+PASSWORD :263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+STEPS    :ssh bandit1@bandit.labs.overthewire.org -p 2220
+          cat ./-           [" - " indicates it is a option/flag  so to read that file we used "./"]
+ 
+LEVEL-2-->LEVEL-3
+
+PASSWORD :MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+STEPS    :ssh bandit2@bandit.labs.overthewire.org -p 2220
+          cat -- "--spaces in this filename--"
+
+LEVEL-3-->LEVEL-4
+
+PASSWORD :2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+STEPS    :ssh bandit3@bandit.labs.overthewire.org -p 2220
+          cd inhere/
+          cat ...Hiding-From-You
+
+LEVEL-4-->LEVEL-5
+
+PASSWORD :4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+STEPS    :ssh bandit4@bandit.labs.overthewire.org -p 2220
+          cd inhere/
+          find -type f | grep human-readable
+          cat file
+
+LEVEL-5-->LEVEL-6
+
+PASSWORD :HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+STEPS    :ssh bandit5@bandit.labs.overthewire.org -p 2220
+          cd inhere
+          ls -alps
+          find -type f -size 1033c ! -executable
+
+LEVEL-6-->LEVEL-7
+
+PASSWORD :morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+STEPS    :ssh bandit6@bandit.labs.overthewire.org -p 2220
+          find / -type f -user bandit7 -group bandit6 -size 33c    [ here " / " indicates the root directory that is it will check from the starting onwards]
+          cat file
+
+LEVEL-7-->LEVEL-8
+
+PASSWORD :dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+STEPS    :ssh bandit7@bandit.labs.overthewire.org -p 2220
+          cat data.txt
+          strings data.txt | grep millionth
+
+LEVEL-8-->LEVEL-9
+
+PASSWORD :4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+STEPS    :ssh bandit8@bandit.labs.overthewire.org -p 2220
+          cat data.txt
+          sort data.txt | uniq -c
+
+LEVEL-9-->LEVEL-10
+
+PASSWORD :FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+STEPS    :ssh bandit9@bandit.labs.overthewire.org -p 2220
+          strings data.txt | grep "="
+
+LEVEL-10-->LEVEL11
+
+PASWORD  :dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+STEPS    :ssh bandit10@bandit.labs.overthewire.org -p 2220
+          cat data.txt 
+          base64 -d data.txt   [ where "d" decodes the data]
+ 
+LEVEL-11-->LEVEL-12
+
+PASSWORD :7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4 
+STEPS    :ssh bandit11@bandit.labs.overthewire.org -p 2220
+          cat data.txt
+        --> go to google and search for rot13 and paste the data to get the password
+
+LEVEL-12-->LEVEL-13
+
+PASSWORD :FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+STEPS    :ssh bandit12@bandit.labs.overthewire.org -p 2220
+          cat data.txt
+       -->first we need to create a directory as per the task and then copy data.txt to that directory  
+          xxd -r data.txt > data     [xxd -r --> hexdump reverse , " > " refers  to continue the process to the input file we are giving]
+          file data                  [identify  the file and tells us wt type of data is present in it  ]
+          mv data data.gz            [add the extension of gzip]
+          gzip -d data               [gzip -d -->decompress the file]
+          mv data data.bz2           [add the extension of bzip2]
+          bzip2 -d data.bz2          [bzip2 -d -->decompress the file]
+          mv data.bz2 data.tar       [add the extension of tar]
+          tar xf data.tar            [tar xf -->extract the file]
+        -->repeat the process till u get the text in the file
+          cat file
+
+LEVEL-13-->LEVEL-14
+
+PASSWORD :MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+STEPS    :ssh bandit13@bandit.labs.overthewire.org -p 2220
+          ls
+          ssh -i sshkey.private bandit14@localhost -p 2220    [ it tells the ssh to use the private key  file "sshkey.private " for authenciation ( instead of password)  ] 
+          cat /etc/bandit_pass/bandit14
+
+LEVEL-14-->LEVEL-15
+
+PASSWORD :8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+STEPS    :ssh bandit14@bandit.labs.overthewire.org -p 2220
+          nc localhost 30000             [ nc --> it is specially used in case of host and particularly ports ]
+        -->after that enter the current password to get the password for next level
+
+LEVEL-15-->LEVEL-16
+
+PASSWORD :kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+STEPS    :ssh bandit15@bandit.labs.overthewire.org -p 2220  
+          ncat --ssl localhost 30001      [ ncat --> it is similar to nc but it is modified version ,it has some  extra features  compared to nc and is more flexible]
+       -->after that enter the current password to get the next password
+
+LEVEL-16-->LEVEL-17
+
+STEPS    :ssh bandit16@bandit.labs.overthewire.org -p 2220
+          nmap localhost -p 31000-32000
+          ncat --ssl localhost 31790
+        -->after that type the current password to move ahead
+        -->u will get some code and copy that store it in a  "vim (name of any file u want)" and save it in the home directory not in present working directory.
+           chmod 400 "name of file in which u stored the code"
+           ssh -i "name of file" bandit17@bandit.labs.overthewire.org -p 2220
+
+LEVEL-17-->LEVEL-18
+
+STEPS    :ssh bandit17@bandit.labs.overthewire.org -p 2220
+          ls
+          dif passwords.new passwords.old
+       -->take the password of new one which is pass for next level
+PASSWORD : x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+LEVEL-18-->LEVEL-19
+
+STEPS    : ssh -t  bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh   ["-t"--> it will open the interactive shell session ,"/bin/sh"->it runs the sh shell instead of the default login shell]          
+           ls
+           cat readme    
+PASSWORD :cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+
+          
