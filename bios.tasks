@@ -170,7 +170,7 @@ STEPS    : ssh -t  bandit18@bandit.labs.overthewire.org -p 2220 /bin/sh   ["-t"-
 
 PASSWORD : cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
 
-LEVEL-19-LEVEL-20
+LEVEL-19-->LEVEL-20
 
 STEPS    : ssh bandit19@bandit.labs.overthewire.org -p 2220
           ls -l              [it will list all the files including the permissions]
