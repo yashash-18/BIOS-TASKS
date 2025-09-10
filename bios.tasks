@@ -174,7 +174,7 @@ LEVEL-19-->LEVEL-20
 
 STEPS    : ssh bandit19@bandit.labs.overthewire.org -p 2220
           ls -l              [it will list all the files including the permissions]
-          ./bandit20-do       ["./" means it will run the file]
+          ./bandit20-do       ["./" here helps to run the file]
           ./bandit20-do cat /etc/bandit_pass/bandit20       [this command is nothing but it will read as the file  as  user bandit20] 
 
 PASSWORD : 0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
